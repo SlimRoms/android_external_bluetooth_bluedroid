@@ -12,7 +12,15 @@ LOCAL_SRC_FILES := \
         src/utils.c
 
 ifeq ($(TARGET_BUILD_VARIANT), userdebug)
+
   LOCAL_CFLAGS += -DBTSNOOP_EXT_PARSER_INCLUDED=TRUE
+
+endif
+
+ifeq ($(QCOM_BT_USE_SMD_TTY),true)
+
+LOCAL_CFLAGS += -DQCOM_WCN_SSR
+
 endif
 
 LOCAL_SRC_FILES += \
