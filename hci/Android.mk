@@ -19,9 +19,24 @@ LOCAL_SRC_FILES += \
 
 else
 
+ifeq ($(BLUETOOTH_HCI_USE_USB),true)
+
+LOCAL_SRC_FILES += \
+        src/hci_h4.c \
+        src/usb.c
+
+LOCAL_C_INCLUDES += \
+        external/libusb
+
+LOCAL_SHARED_LIBRARIES := \
+        libusb
+else
+
 LOCAL_SRC_FILES += \
         src/hci_h4.c \
         src/userial.c
+
+endif
 
 endif
 
@@ -29,7 +44,7 @@ LOCAL_C_INCLUDES += \
         $(LOCAL_PATH)/include \
         $(LOCAL_PATH)/../utils/include
 
-LOCAL_SHARED_LIBRARIES := \
+LOCAL_SHARED_LIBRARIES += \
         libcutils \
         libdl \
         libbt-utils
