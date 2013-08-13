@@ -27,6 +27,8 @@ LOCAL_SRC_FILES += \
         src/userial.c \
         src/userial_mct.c \
         src/hci_mct.c \
+        src/hci_h4.c\
+        src/hci_ibs.c\
         src/userial_mct.c
 
 ifeq ($(BLUETOOTH_HCI_USE_USB),true)
