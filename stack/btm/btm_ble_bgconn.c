@@ -314,12 +314,12 @@ BOOLEAN btm_update_bg_conn_list(BOOLEAN to_add, BD_ADDR bd_addr, UINT8 *p_attr_t
         {
             if (!to_add)
             {
-                memset(p_bg_dev, 0, sizeof(tBTM_LE_BG_CONN_DEV));
                 p_cb->bg_dev_num --;
                 p_cur = p_bg_dev;
                 p_next = p_bg_dev + 1;
                 for (j = i + 1 ;j < BTM_BLE_MAX_BG_CONN_DEV_NUM && p_next->in_use ; j ++, p_cur ++, p_next ++ )
                     memcpy(p_cur, p_next, sizeof(tBTM_LE_BG_CONN_DEV));
+                memset(p_cur, 0, sizeof(tBTM_LE_BG_CONN_DEV));
             }
             ret = TRUE;
             break;
