@@ -50,7 +50,8 @@ LOCAL_SRC_FILES += \
     ../btif/src/btif_gatt_test.c \
     ../btif/src/btif_config.c \
     ../btif/src/btif_config_util.cpp \
-    ../btif/src/btif_profile_queue.c
+    ../btif/src/btif_profile_queue.c \
+    ../btif/src/bluetoothTrack.cpp
 
 # callouts
 LOCAL_SRC_FILES+= \
@@ -104,6 +105,8 @@ LOCAL_C_INCLUDES+= . \
 	$(LOCAL_PATH)/../audio_a2dp_hw \
 	$(LOCAL_PATH)/../utils/include \
 	$(bdroid_C_INCLUDES) \
+	$(TARGET_OUT_HEADERS)/codecs/decoder/inc \
+	$(TOP)/frameworks/av/include/media \
 	external/tinyxml2
 
 LOCAL_CFLAGS += -DBUILDCFG $(bdroid_CFLAGS) -Werror -Wno-error=maybe-uninitialized -Wno-error=uninitialized -Wno-unused-parameter
@@ -130,7 +133,9 @@ LOCAL_SHARED_LIBRARIES := \
     liblog \
     libpower \
     libbt-hci \
-    libbt-utils
+    libbt-utils \
+    libdl \
+    libmedia
 
 #LOCAL_WHOLE_STATIC_LIBRARIES := libbt-brcm_gki libbt-brcm_stack libbt-brcm_bta
 LOCAL_STATIC_LIBRARIES := libbt-brcm_gki libbt-brcm_bta libbt-brcm_stack libbt-btc libtinyxml2
