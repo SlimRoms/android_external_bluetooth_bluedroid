@@ -1430,6 +1430,10 @@ and USER_HW_DISABLE_API macros */
 #endif
 #endif
 
+#ifndef HCI_RAW_CMD_INCLUDED
+#define HCI_RAW_CMD_INCLUDED    TRUE
+#endif
+
 /******************************************************************************
 **
 ** BLE
