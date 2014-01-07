@@ -1132,6 +1132,22 @@ update_call_states:
 
 /*******************************************************************************
 **
+** Function         get_remote_features
+**
+** Description      get remote features
+**
+** Returns         int
+**
+*******************************************************************************/
+static int get_remote_features()
+{
+    CHECK_BTHF_INIT();
+
+    return btif_hf_cb.peer_feat;
+}
+
+/*******************************************************************************
+**
 ** Function         btif_hf_is_call_idle
 **
 ** Description      returns true if no call is in progress
@@ -1218,6 +1234,7 @@ static const bthf_interface_t bthfInterface = {
     at_response,
     clcc_response,
     phone_state_change,
+    get_remote_features,
     cleanup,
 };
 
