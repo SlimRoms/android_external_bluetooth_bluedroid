@@ -20,7 +20,7 @@
 #include <media/AudioTrack.h>
 
 struct BluetoothTrack {
-    android::AudioTrack* mTrack;
+    android::sp<android::AudioTrack> mTrack;
 };
 
 typedef struct BluetoothTrack BluetoothTrack;
@@ -51,7 +51,7 @@ int btCreateTrack(int trackFreq, int channelType)
 
 void btStartTrack()
 {
-    if ((track) && (track->mTrack))
+    if ((track != NULL) && (track->mTrack.get() != NULL))
     {
         track->mTrack->start();
     }
@@ -60,7 +60,7 @@ void btStartTrack()
 
 void btDeleteTrack()
 {
-    if ((track) && (track->mTrack))
+    if ((track != NULL) && (track->mTrack.get() != NULL))
     {
         delete track;
         track = NULL;
@@ -69,7 +69,7 @@ void btDeleteTrack()
 
 void btPauseTrack()
 {
-    if ((track) && (track->mTrack))
+    if ((track != NULL) && (track->mTrack.get() != NULL))
     {
         track->mTrack->pause();
         track->mTrack->flush();
@@ -78,7 +78,7 @@ void btPauseTrack()
 
 void btStopTrack()
 {
-    if ((track) && (track->mTrack))
+    if ((track != NULL) && (track->mTrack.get() != NULL))
     {
         track->mTrack->stop();
     }
@@ -87,7 +87,7 @@ void btStopTrack()
 int btWriteData(void *audioBuffer, int bufferlen)
 {
     int retval = -1;
-    if ((track) && (track->mTrack))
+    if ((track != NULL) && (track->mTrack.get() != NULL))
     {
         retval = track->mTrack->write(audioBuffer, (size_t)bufferlen);
     }
