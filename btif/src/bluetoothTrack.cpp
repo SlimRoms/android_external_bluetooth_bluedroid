@@ -46,7 +46,6 @@ int btCreateTrack(int trackFreq, int channelType)
     }
     ret = 0;
     track->mTrack->setVolume(1, 1);
-    track->mTrack->start();
     return ret;
 }
 
@@ -64,6 +63,7 @@ void btDeleteTrack()
     if ((track) && (track->mTrack))
     {
         delete track;
+        track = NULL;
     }
 }
 
@@ -72,6 +72,7 @@ void btPauseTrack()
     if ((track) && (track->mTrack))
     {
         track->mTrack->pause();
+        track->mTrack->flush();
     }
 }
 
