@@ -40,7 +40,7 @@
 #define LOG_TAG "BTIF_STORAGE"
 
 #include "btif_api.h"
-
+#include "btif_storage.h"
 #include "btif_util.h"
 #include "bd.h"
 #include "gki.h"
@@ -152,7 +152,6 @@
 #define BTIF_STORAGE_HL_APP_DATA     "hl_app_data_"
 #define BTIF_STORAGE_HL_APP_MDL_DATA "hl_app_mdl_data_"
 
-#define  BTIF_STORAGE_MAX_ALLOWED_REMOTE_DEVICE 512
 /************************************************************************************
 **  Local type definitions
 ************************************************************************************/
