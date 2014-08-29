@@ -932,19 +932,19 @@ static void btgattc_handle_event(uint16_t event, char* p_param)
                 GKI_freebuf(p_cb->adv_data.data.manu.p_val);
 
             // ... service data
-            if (p_cb->adv_data.data.p_proprietary != NULL)
+            if (p_cb->adv_data.data.vs_data != NULL)
             {
                 int i = 0;
-                tBTA_BLE_PROP_ELEM *p_elem = p_cb->adv_data.data.p_proprietary->p_elem;
-                while (i++ != p_cb->adv_data.data.p_proprietary->num_elem && p_elem)
+                tBTA_BLE_PROP_ELEM *p_elem = p_cb->adv_data.data.vs_data->p_elem;
+                while (i++ != p_cb->adv_data.data.vs_data->num_elem && p_elem)
                 {
                     if (p_elem->p_val != NULL)
                         GKI_freebuf(p_elem->p_val);
                     ++p_elem;
                 }
-                if (p_cb->adv_data.data.p_proprietary->p_elem != NULL)
-                    GKI_freebuf(p_cb->adv_data.data.p_proprietary->p_elem);
-                GKI_freebuf(p_cb->adv_data.data.p_proprietary);
+                if (p_cb->adv_data.data.vs_data->p_elem != NULL)
+                    GKI_freebuf(p_cb->adv_data.data.vs_data->p_elem);
+                GKI_freebuf(p_cb->adv_data.data.vs_data);
             }
 
             // ... service list
@@ -1148,13 +1148,13 @@ static bt_status_t btif_gattc_set_adv_data(int client_if, bool set_scan_rsp, boo
 
     if (p_elem_service_data != NULL || p_elem_service_128 != NULL)
     {
-        btif_cb.adv_data.data.p_proprietary = GKI_getbuf(sizeof(tBTA_BLE_PROPRIETARY));
-        if (btif_cb.adv_data.data.p_proprietary != NULL)
+        btif_cb.adv_data.data.vs_data = GKI_getbuf(sizeof(tBTA_BLE_VS_DATA));
+        if (btif_cb.adv_data.data.vs_data != NULL)
         {
-            tBTA_BLE_PROPRIETARY *p_prop = btif_cb.adv_data.data.p_proprietary;
+            tBTA_BLE_VS_DATA *p_prop = btif_cb.adv_data.data.vs_data;
             tBTA_BLE_PROP_ELEM *p_elem = NULL;
             p_prop->num_elem = 0;
-            btif_cb.adv_data.mask |= BTM_BLE_AD_BIT_PROPRIETARY;
+            btif_cb.adv_data.mask |= BTM_BLE_AD_BIT_VS_DATA;
 
             if (p_elem_service_128 != NULL)
                 ++p_prop->num_elem;
