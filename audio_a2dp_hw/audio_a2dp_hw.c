@@ -637,9 +637,9 @@ static ssize_t out_write(struct audio_stream_out *stream, const void* buffer,
     {
         fwrite (buffer,1,bytes,outputpcmsamplefile);
     }
-    #endif
 
     ts_error_log("a2dp_out_write", bytes, out->buffer_sz, out->cfg);
+    #endif
 
     pthread_mutex_unlock(&out->lock);
 
