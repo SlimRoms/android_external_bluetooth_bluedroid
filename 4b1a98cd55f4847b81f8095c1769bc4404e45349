@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa6b99d7_fae36903",
+        "filename": "stack/bnep/bnep_utils.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1000043
+      },
+      "writtenOn": "2015-12-07T23:56:53Z",
+      "side": 1,
+      "message": "Needs to be removed",
+      "range": {
+        "startLine": 214,
+        "startChar": 0,
+        "endLine": 217,
+        "endChar": 5
+      },
+      "revId": "4b1a98cd55f4847b81f8095c1769bc4404e45349",
+      "serverId": "f8201d64-d729-4630-b91d-5f8be02869f0",
+      "unresolved": false
+    }
+  ]
+}
